@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All premium link bd - Premium Unlocker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-red: #ff0033;
+            --soft-glow: rgba(255, 0, 51, 0.3);
+            --bg-dark: #050505;
+            --card-bg: rgba(15, 15, 15, 0.9);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            background: radial-gradient(circle at top right, #2a0505 0%, #050505 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* 1. Title Bar */
+        .header {
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 2px solid var(--primary-red);
+            box-shadow: 0 0 20px var(--soft-glow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header h1 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary-red);
+            text-shadow: 0 0 10px var(--primary-red);
+        }
+
+        /* 2. Notice Bar */
+        .notice-bar {
+            max-width: 800px;
+            width: 95%;
+            margin: 20px auto;
+            padding: 15px;
+            background: var(--card-bg);
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-red);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+
+        .notice-bar p {
+            color: #ffcc00;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        /* 3. Image Section */
+        .content-area {
+            max-width: 800px;
+            width: 95%;
+            margin-bottom: 20px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            box-shadow: 0 0 15px rgba(0,0,0,0.7);
+            transition: 0.3s;
+        }
+
+        .image-container img:hover {
+            border-color: var(--primary-red);
+            box-shadow: 0 0 20px var(--soft-glow);
+        }
+
+        /* 4. Button Section & Pulse Animation */
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .main-btn {
+            width: 100%;
+            max-width: 350px;
+            padding: 18px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 22px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.4s;
+            position: relative;
+        }
+
+        .watch-btn {
+            background: var(--primary-red);
+            color: white;
+            box-shadow: 0 0 20px rgba(255, 0, 51, 0.4);
+            animation: pulse-animation 2s infinite;
+        }
+
+        @keyframes pulse-animation {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 0, 51, 0.7); }
+            70% { transform: scale(1.03); box-shadow: 0 0 0 15px rgba(255, 0, 51, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 0, 51, 0); }
+        }
+
+        .down-btn {
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--primary-red);
+        }
+
+        /* 5. Ads Slot */
+        .ads-slot {
+            width: 100%;
+            max-width: 400px;
+            min-height: 100px;
+            background: rgba(255,255,255,0.05);
+            border: 1px dashed #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #666;
+            font-size: 12px;
+            margin: 10px 0;
+        }
+
+        /* 6. Notification Steps */
+        #status-msg {
+            margin: 15px 0;
+            font-weight: bold;
+            color: #00ffcc;
+            text-shadow: 0 0 5px #00ffcc;
+            display: none;
+        }
+
+        /* 7. Video Player Zone */
+        #video-zone {
+            display: none;
+            width: 100%;
+            max-width: 800px;
+            background: #000;
+            border: 2px solid var(--primary-red);
+            box-shadow: 0 0 40px var(--soft-glow);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        video, iframe { width: 100%; aspect-ratio: 16/9; display: block; }
+
+        /* 8. Popup Overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(8px);
+        }
+
+        .popup-card {
+            background: #111;
+            padding: 30px;
+            border: 2px solid var(--primary-red);
+            border-radius: 15px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .ctr-btn {
+            background: var(--primary-red);
+            color: #fff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Title Bar -->
+    <header class="header">
+        <h1>All premium link bd</h1>
+    </header>
+
+    <!-- 2. Notice Bar -->
+    <div class="notice-bar">
+        <p>ভিডিও দেখার আগে নিচের সব ধাপ সম্পূর্ণ করুন, তারপর ফুল ভিডিও উপভোগ করুন।</p>
+    </div>
+
+    <div class="content-area">
+        <!-- 3. Image Section -->
+        <div class="image-container" id="img-group">
+            <img id="thumb1" src="" alt="Thumbnail 1">
+            <img id="thumb2" src="" alt="Thumbnail 2">
+        </div>
+
+        <!-- 6. Step Notification -->
+        <div id="status-msg"></div>
+
+        <!-- 4. & 5. Buttons and Ads -->
+        <div class="btn-container" id="controls">
+            <button class="main-btn watch-btn" onclick="handleAdsFlow()">Watch Now</button>
+            
+            <div class="ads-slot">
+                <!-- Adestra Ads Link Here -->
+                ADVERTISEMENT SLOT
+            </div>
+
+            <button class="main-btn down-btn" onclick="handleDownload()">Download Now</button>
+        </div>
+
+        <!-- 7. Video Player -->
+        <div id="video-zone">
+            <div id="player-target"></div>
+        </div>
+    </div>
+
+    <!-- 8. Popup Notice -->
+    <div class="overlay" id="ad-overlay">
+        <div class="popup-card">
+            <h2 style="color:var(--primary-red); margin-bottom:10px;">বিজ্ঞপ্তি!</h2>
+            <p>এই ads টি দেখুন, এবং ads টি দেখা সম্পূর্ণ হলে পুনরায় আবার ফুল ভিডিও উপভোগ করুন</p>
+            <button class="ctr-btn" onclick="closeAdPopup()">Continue / Close Ads</button>
+        </div>
+    </div>
+
+    <script>
+        /*******************************************************
+         * 10. CUSTOMIZATION (সহজে পরিবর্তন করুন)
+         *******************************************************/
+        const CONFIG = {
+            image1: "https://i.supaimg.com/f57f5595-78af-4fcc-81e2-5e93a3fe4cca/736ad7d1-d51c-4295-aa12-320870db616b.jpg",
+            image2: "https://i.supaimg.com/f57f5595-78af-4fcc-81e2-5e93a3fe4cca/23572437-b93f-4bb0-964d-3c1d9c67c933.jpg",
+            
+            videoType: "mp4", // 'mp4' অথবা 'embed'
+            videoURL: "https://www.w3schools.com/html/mov_bbb.mp4",
+            
+            adsLink: "https://www.google.com", // Adestra Direct Link
+            shortAd: "https://www.google.com" // Download Short Link
+        };
+
+        // Initialize UI
+        document.getElementById('thumb1').src = CONFIG.image1;
+        document.getElementById('thumb2').src = CONFIG.image2;
+
+        let currentStep = 0;
+
+        /*******************************************************
+         * 6. Step-by-Step Logic (Verified Flow)
+         *******************************************************/
+        function handleAdsFlow() {
+            const status = document.getElementById('status-msg');
+            status.style.display = "block";
+
+            if (currentStep === 0) {
+                status.innerText = "Step 1 Notification: প্রথম ধাপ সম্পূর্ণ করুন: প্রথম ads দেখুন ভিডিও আনলক করার জন্য";
+                window.open(CONFIG.adsLink, '_blank');
+                currentStep = 1;
+            } 
+            else if (currentStep === 1) {
+                status.innerText = "Step 2 Notification: দ্বিতীয় ধাপ সম্পূর্ণ করুন: দ্বিতীয় ads দেখুন ভিডিও আনলক করার জন্য";
+                window.open(CONFIG.adsLink, '_blank');
+                currentStep = 2;
+            } 
+            else if (currentStep === 2) {
+                status.innerText = "Step 3 Notification: সব ধাপ সম্পূর্ণ হয়েছে, এখন ভিডিও আনলক হচ্ছে…";
+                setTimeout(unlockAndPlay, 1000);
+            }
+        }
+
+        /*******************************************************
+         * 7. Video Unlock System
+         *******************************************************/
+        function unlockAndPlay() {
+            document.getElementById('controls').style.display = "none";
+            document.getElementById('img-group').style.display = "none";
+            document.getElementById('status-msg').style.display = "none";
+            
+            const zone = document.getElementById('video-zone');
+            const target = document.getElementById('player-target');
+            zone.style.display = "block";
+
+            if (CONFIG.videoType === "mp4") {
+                target.innerHTML = `<video id="premium-video" controls autoplay><source src="${CONFIG.videoURL}" type="video/mp4"></video>`;
+                // চেষ্টা করা ভিডিও অটো-প্লে করার
+                const vid = document.getElementById('premium-video');
+                vid.play().catch(e => console.log("Autoplay blocked, user must click play"));
+            } else {
+                target.innerHTML = `<iframe id="premium-iframe" src="${CONFIG.videoURL}?autoplay=1" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+            }
+
+            // ৮. ১০ সেকেন্ড পর পর পপআপ
+            setInterval(triggerPopup, 10000);
+        }
+
+        /*******************************************************
+         * 8. Popup & CTR System
+         *******************************************************/
+        function triggerPopup() {
+            const vid = document.getElementById('premium-video');
+            if (vid) vid.pause();
+            document.getElementById('ad-overlay').style.display = "flex";
+        }
+
+        function closeAdPopup() {
+            window.open(CONFIG.adsLink, '_blank'); // অ্যাড ওপেন
+            document.getElementById('ad-overlay').style.display = "none"; // পপআপ বন্ধ
+            const vid = document.getElementById('premium-video');
+            if (vid) vid.play(); // ভিডিও প্লে
+        }
+
+        /*******************************************************
+         * 9. Download System
+         *******************************************************/
+        function handleDownload() {
+            alert("ডাউনলোড শুরু করার আগে একটি short ads সম্পূর্ণ করুন");
+            window.open(CONFIG.shortAd, '_blank');
+        }
+    </script>
+</body>
+</html>
